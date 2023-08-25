@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment invoice</title>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Hindi&display=swap");
+    * {
+      padding: 0;
+      margin: 0;
+      font-family: "Tiro Devanagari Hindi", serif;
+      /* overflow-x: hidden; */
+    }
+    .notification-header {
+      text-align: center;
+      background-color: green;
+      padding: 30px;
+    }
+    .notification-header > p {
+      color: white;
+      text-transform: uppercase;
+    }
+    .transaction-info {
+      background-color: green;
+      color: white;
+      margin-top: 60px;
+      width: 65%;
+      padding: 10px;
+    }
+    .payer-info {
+      background-color: green;
+      color: white;
+      margin-top: 60px;
+      width: 45%;
+      padding: 10px;
+    }
+    .transaction-info > p {
+      color: white;
+      padding-left: 30%;
+      text-transform: uppercase;
+    }
+    .payer-info > p {
+      color: white;
+      padding-left: 30%;
+      text-transform: uppercase;
+    }
+    .transaction-info-container {
+      margin-left: 34px;
+      margin-right: 34px;
+    }
+    .transaction-info-flex {
+      display: flex;
+      margin-top: 10px;
+    }
+    .transaction-info-flex > li {
+      list-style: none;
+    }
+    .space-text {
+      margin-left: 9%;
+    }
+    .payer-space-text {
+      margin-left: 15%;
+      text-transform: uppercase;
+    }
+    .payer-space-number-text {
+      margin-left: 10%;
+    }
+    .transaction-info-flex > a {
+      margin-left: 15%;
+    }
+    .transaction-breakdown-info {
+      text-align: center;
+      background-color: green;
+      /* padding: 20px; */
+      margin-top: 20px;
+      color: white;
+    }
+    .row > th {
+      /* color: white; */
+      /* padding: 10px; */
+      border-left: 1px solid white;
+    }
+    .total-inv {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+    .total-inv > li {
+      list-style: none;
+    }
+    .coat-and-qr-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .coat-and-qr-container {
+      padding: 20px 60px;
+    }
+    .coat-and-qr-container,
+    ul > li {
+      list-style: none;
+    }
+    .trans-detail {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .trans-detail-res {
+      display: flex;
+      justify-content: space-between;
+    }
+    .applicant-info {
+      display: flex;
+      justify-content: space-between;
+    }
+    .fee-desc {
+      margin-top: 20px;
+    }
+    .error-message {
+      text-align: center;
+      color: red;
+      padding: 30px;
+    }
+    #age1 {
+      accent-color: red;
+    }
+    @media (max-width: 768px) {
+      .trans-detail {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 10px;
+        margin-bottom: 30px;
+      }
+      .trans-detail-res {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        margin-bottom: 30px;
+      }
+      .applicant-info {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+        margin-bottom: 30px;
+      }
+    }
+  </style>
+  <body>
+    <!-- Coat and QR code -->
+    <div class="coat-and-qr-container">
+      <ul class="coat-and-qr-flex">
+        <li>
+          <img src="img/coat-of-arm-removebg-preview.png" style="width: 90px" />
+        </li>
+        <!--  -->
+        <li>
+          <img src="img/QR-code-removebg-preview.png" style="width: 90px" />
+        </li>
+      </ul>
+      <!-- Transactions Details -->
+      <div class="trans-detail">
+        <li>RRR</li>
+        <li>Transaction Date</li>
+        <li>Payment Channel</li>
+      </div>
+      <div class="trans-detail-res">
+        <li>299009828283</li>
+        <li style="margin-right: 7%">01/01/2001 12:00:00</li>
+        <li style="margin-right: 5%">Remita</li>
+      </div>
+      <!-- Applicant Info -->
+      <div class="applicant-info">
+        <div>
+          <p>Applicant <b>Name</b></p>
+          <p>MTN Group management services(PTY) LTD</p>
+          <p><b>Applicant Address</b></p>
+          <p>34 St louis street, Lekki lagos</p>
+          <p>Class</p>
+        </div>
+        <div>
+          <p>Payment Status: <span style="color: green">Approved</span></p>
+          <p>
+            Payment mode:
+            <span style="text-transform: uppercase">card payment</span>
+          </p>
+          <p>Payment Refrencence:IPO 2292838</p>
+        </div>
+        <!-- -->
+      </div>
+      <!-- Fee description -->
+      <div class="fee-desc">
+        <p>Fee description</p>
+        <hr style="border-bottom: 1px solid white; margin-bottom: 10px" />
+        <input type="radio" id="age1" name="age" value="30" />
+        <label for="age1">Registeration OF DESIGN TEXTILE</label><br />
+        <input type="radio" id="age1" name="age" value="30" />
+        <label for="age1">Technology fee</label><br />
+        <hr style="border-bottom: 1px solid white; margin-bottom: 10px" />
+        <p class="error-message">
+          Summary of your unsuccessfull Transaction. Your card was not debited
+        </p>
+      </div>
+
+      <div class="notification-header">
+        <p>payment notification</p>
+      </div>
+      <div class="transaction-info-container">
+        <div class="transaction-info">
+          <p>Transaction information</p>
+        </div>
+        <ul class="transaction-info-flex">
+          <li>Payment Receipt</li>
+          <li class="space-text">Lorem, ipsum dolor.</li>
+        </ul>
+        <ul class="transaction-info-flex">
+          <li>Remita Retrieval Reference(RRR)</li>
+          <li>210409009223</li>
+        </ul>
+        <ul class="transaction-info-flex">
+          <li>Payment Channel</li>
+          <li class="space-text">Remita</li>
+        </ul>
+        <ul class="transaction-info-flex">
+          <li>Transaction Date</li>
+          <li class="space-text">UnPaid</li>
+        </ul>
+        <ul class="transaction-info-flex">
+          <li>Transaction Date</li>
+          <li class="space-text">Awaiting</li>
+        </ul>
+        <div class="payer-info">
+          <p>Payer Information</p>
+        </div>
+        <ul class="transaction-info-flex">
+          <li>Name</li>
+          <li class="payer-space-text">
+            MTN Group management service (pty)ltd
+          </li>
+        </ul>
+        <ul class="transaction-info-flex">
+          <li>Email</li>
+          <a href="#" class="space-text">JohnDoe@gmail.com</a>
+        </ul>
+        <ul class="transaction-info-flex">
+          <li>Phone number</li>
+          <li class="payer-space-number-text">09022266699</li>
+        </ul>
+
+        <div class="transaction-breakdown-info">
+          <p style="text-transform: uppercase; padding-top: 5px">
+            Transaction BreakDown information
+          </p>
+          <table style="width: 100%">
+            <tr class="row">
+              <th>Payment Date</th>
+              <th>Refrence No</th>
+              <th>Service Description</th>
+              <th>Amount(NGN)</th>
+              <th>Tech Feee(NGN)</th>
+              <th>Total(NGN)</th>
+              <hr />
+            </tr>
+          </table>
+        </div>
+        <table style="width: 100%">
+          <tr class="row">
+            <th>Payment Date</th>
+            <th>IP223377637383</th>
+            <th>Registeration of patient(Foreign)</th>
+            <th>25,000,000</th>
+            <th>25,000,0000,000000000</th>
+            <th>27,900,00</th>
+            <hr />
+          </tr>
+        </table>
+
+        <!-- Total invoice -->
+        <div class="total-inv">
+          <li style="margin-left: 40%; text-transform: uppercase">
+            total invoice <strong>Amount</strong>
+          </li>
+          <li>27,000,00</li>
+        </div>
+        <p>Please do not reply this mail</p>
+        <p style="margin-top: 8px">Live 24/7 <b>Support</b> (+234)0901556736</p>
+      </div>
+    </div>
+  </body>
+</html>
+<!---->
